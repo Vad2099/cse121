@@ -53,3 +53,23 @@ function encounter() {
 }
 
 encounter();
+
+
+
+
+// let firstName = 'Antonia';
+// let lastName = 'Francesca';
+
+// function fullName(first, last) {
+  // return `${first} ${last}`;
+// }
+
+// const fullName = function (first,last){
+//   return `${first} ${last}`;
+// }
+
+// const fullName = (first,last) => `${first} ${last}`;
+// // or 
+// const fullName = (first,last) => {
+//   return `${first} ${last}`;
+// }
