@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML vs innerText</title>
+</head>
+<body>
+    <div id="htmlContent"><p>Texto con <strong>HTML</strong>.</p></div>
+    <div id="textContent"><p>Texto con <strong>HTML</strong>.</p></div>
+    <button id="updateHtmlContent">Actualizar innerHTML</button>
+    <button id="updateTextContent">Actualizar innerText</button>
+
+    <script>
+        const htmlDiv = document.querySelector("#htmlContent");
+        const textDiv = document.querySelector("#textContent");
+        const updateHtmlButton = document.querySelector("#updateHtmlContent");
+        const updateTextButton = document.querySelector("#updateTextContent");
+
+        updateHtmlButton.addEventListener("click", function() {
+            htmlDiv.innerHTML = "<p>Nuevo <strong>contenido</strong> con <em>HTML</em>.</p>";
+        });
+
+        updateTextButton.addEventListener("click", function() {
+            textDiv.innerText = "Nuevo contenido de texto sin HTML.";
+        });
+    </script>
+</body>
+</html>
