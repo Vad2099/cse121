@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Project | APOD NASA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main2.css">
+</head>
+
+<body>
+  <nav>
+    <ul id="menu">
+      <li><a id="toggleMenu">&equiv;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="w01-task.html">W1 Task</a></li>
+      <li><a href="w03-task.html">W3 Task</a></li>
+      <li><a href="w04-task.html">W4 Task</a></li>
+      <li><a href="w05-task.html" class="active">W5 Task</a></li>
+      <li><a href="project.html">Project</a></li>
+    </ul>
+  </nav>
+  <main id="gridly">
+    <div class="container">
+      <h1>Astronomy Picture of the Day</h1>
+
+      <!-- Dropdown for filtering -->
+      <label for="filtered">Filter by:</label>
+      <select id="filtered">
+        <option value="all">All</option>
+        <option value="images">Images</option>
+        <option value="videos">Videos</option>
+        <option value="recent">Recent</option>
+      </select>
+
+      <div id="apodContainer">
+        <!-- El contenido dinámico se insertará aquí -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy;<span id="year"></span> | Final Project - Fetching APOD Data | CSE 121b
+  </footer>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/project.js"></script>
+  <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
