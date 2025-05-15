@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prophets</title>
+</head>
+
+<body>
+
+    <!-- Contenedor donde se insertarán las tarjetas -->
+    <div id="cards-container"></div>
+
+    <!-- Plantilla HTML para cada tarjeta de profeta -->
+    <template id="prophet-card">
+        <section class="card">
+            <h2></h2> <!-- Nombre completo -->
+            <p></p> <!-- Fecha de nacimiento -->
+            <p></p> <!-- Lugar de nacimiento -->
+            <img class="profile" src="" alt="" loading="lazy" width="200" height="300"> <!-- Imagen -->
+        </section>
+    </template>
+
+    <script>
+        // Función asincrónica para obtener los datos de los profetas
+        const getTemples = async () => {
+            const url = "https://brotherblazzard.github.io/canvas-content/latter-day-prophets.json";
+
+            try {
+                const response = await fetch(url); // Obtener los datos desde la URL
+
+                if (response.ok) {
+                    const data = await response.json(); // Convertir los datos JSON en objeto JavaScript
+                    displayTemples(data); // Mostrar los profetas en pantalla
+                } else {
+                    console.error("Error fetching prophets data:", response.statusText);
+                }
+            } catch (error) {
+                console.error("Fetch failed:", error); // Captura de errores en red
+            }
+        };
+
+        // Función para crear y mostrar las tarjetas usando forEach
+        function displayTemples(data) {
+            const container = document.getElementById("cards-container"); // Contenedor donde irá todo
+            const template = document.getElementById("prophet-card");     // Plantilla de tarjeta
+
+            // Recorremos cada profeta con forEach
+            data.prophets.forEach((prophet) => {
+                const clone = template.content.cloneNode(true); // Clonamos la plantilla
+
+                // Seleccionamos los elementos del clon
+                const h2 = clone.querySelector("h2");
+                const birthdateP = clone.querySelectorAll("p")[0];
+                const birthplaceP = clone.querySelectorAll("p")[1];
+                const img = clone.querySelector("img");
+
+                // Insertamos los datos del profeta
+                h2.textContent = `${prophet.name} ${prophet.lastname}`;
+                birthdateP.textContent = `Birth Date: ${prophet.birthdate}`;
+                birthplaceP.textContent = `Birth Place: ${prophet.birthplace}`;
+                img.src = prophet.imageurl;
+                img.alt = `Portrait of ${prophet.name} ${prophet.lastname}`;
+
+                // Agregamos la tarjeta clonada al contenedor
+                container.appendChild(clone);
+            });
+        }
+
+        // Ejecutamos la función principal al cargar la página
+        getTemples();
+    </script>
+
+</body>
+
+</html>
